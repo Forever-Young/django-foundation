@@ -24,6 +24,8 @@ class GridFormMixin(object):
         context['form_title'] = self.get_form_title()
         context['grid_cols'] = self.get_grid_cols()
         context['form_render'] = self.get_form_render()
+        context['form_extra_button_classes'] =\
+                self.get_form_button_extra_classes()
         return context
 
     def get_form_title(self):
@@ -46,3 +48,11 @@ class GridFormMixin(object):
 
     def get_form_render(self):
         return getattr(self, 'form_render', 'as_grid_list')
+
+    def get_form_button_extra_classes(self):
+        button_classes = getattr(self, 'button_classes', None)
+        if button_classes is not None:
+            button_classes = u' %s' % u' '.join(button_classes)
+        else:
+            button_classes = u''
+        return button_classes

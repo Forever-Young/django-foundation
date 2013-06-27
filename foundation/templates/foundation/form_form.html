@@ -18,7 +18,7 @@
     </div>
     <div class="row">
         <div class="large-{{ grid_cols|default:'10' }} large-centered columns text-right">
-            <button class="button" type="submit">{{ form_submit_text }}</button>
+            <button class="button{{ form_button_extra_classes }}" type="submit">{{ form_submit_text }}</button>
         </div>
     </div>
 </form>
