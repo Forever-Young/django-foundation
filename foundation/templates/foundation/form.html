@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block layout %}
+    {% if form_title %}
+    <div class="row">
+        <div class="large-12 columns text-center"><h2>{{ form_title }}</h2></div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="large-12 columns">
+            {% include 'foundation/form_form.html' %}
+        </div>
+    </div>
+{% endblock %}

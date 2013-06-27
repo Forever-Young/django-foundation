@@ -1,0 +1,24 @@
+{% load i18n %}
+{% include 'foundation/close_modal.html' %}
+<form action="{{ form_action_url }}" method="post"{% if form_uploading %} enctype="multipart/form-data"{% endif %} class="custom">
+    {% if request.is_ajax %}
+    <div class="row">
+        <div class="large-{{ ajax_grid_cols|default:'10' }} large-centered columns text-center"><h3>{{ form_title }}</h3></div>
+    </div>
+    {% endif %}
+    {% csrf_token %}
+    {% ifequal form_render 'as_grid_list' %}
+    {{ form.as_grid_list }}
+    {% endifequal %}
+    {% ifequal form_render 'as_grid_pair_list' %}
+    {{ form.as_grid_pair_list }}
+    {% endifequal %}
+    <div class="row">
+        <div class="large-{{ grid_cols|default:'10' }} large-centered columns">&emsp;</div>
+    </div>
+    <div class="row">
+        <div class="large-{{ grid_cols|default:'10' }} large-centered columns text-right">
+            <button class="button" type="submit">{{ form_submit_text }}</button>
+        </div>
+    </div>
+</form>
