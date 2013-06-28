@@ -29,12 +29,19 @@ def form_as_grid_pair_list(form):
     return output
 
 
-class GridForm(forms.Form):
-    # TODO: check
-    # error_css_class = 'error'
+class GridMixin(object):
 
     def as_grid_list(self):
         return form_as_grid_list(self, getattr(self, 'grid_cols', 10))
 
     def as_grid_pair_list(self):
         return form_as_grid_pair_list(self)
+
+
+class GridForm(GridMixin, forms.Form):
+    # TODO: check
+    # error_css_class = 'error'
+    pass
+
+class GridModelForm(GridMixin, forms.ModelForm):
+    pass

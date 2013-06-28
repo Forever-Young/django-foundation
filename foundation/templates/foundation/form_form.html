@@ -8,10 +8,13 @@
     {% endif %}
     {% csrf_token %}
     {% ifequal form_render 'as_grid_list' %}
-    {{ form.as_grid_list }}
-    {% endifequal %}
-    {% ifequal form_render 'as_grid_pair_list' %}
-    {{ form.as_grid_pair_list }}
+        {{ form.as_grid_list }}
+    {% else %}
+        {% ifequal form_render 'as_grid_pair_list' %}
+            {{ form.as_grid_pair_list }}
+        {% else %}
+            {{ form.as_grid_list }}
+        {% endifequal %}
     {% endifequal %}
     <div class="row">
         <div class="large-{{ grid_cols|default:'10' }} large-centered columns">&emsp;</div>

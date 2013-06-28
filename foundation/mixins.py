@@ -24,7 +24,7 @@ class GridFormMixin(object):
         context['form_title'] = self.get_form_title()
         context['grid_cols'] = self.get_grid_cols()
         context['form_render'] = self.get_form_render()
-        context['form_extra_button_classes'] =\
+        context['form_button_extra_classes'] =\
                 self.get_form_button_extra_classes()
         return context
 
@@ -44,7 +44,7 @@ class GridFormMixin(object):
         return getattr(self, 'grid_cols', 10)
 
     def get_ajax_grid_cols(self):
-        return getattr(self, 'ajax_grid_cols', self.get_grid_cols())
+        return getattr(self, 'ajax_grid_cols', 10)
 
     def get_form_render(self):
         return getattr(self, 'form_render', 'as_grid_list')
