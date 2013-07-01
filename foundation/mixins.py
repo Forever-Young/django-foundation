@@ -56,3 +56,11 @@ class GridFormMixin(object):
         else:
             button_classes = u''
         return button_classes
+
+
+class TopBarMenuMixin(object):
+
+    def get_context_data(self, **kwargs):
+        context = super(TopBarMenuMixin, self).get_context_data(**kwargs)
+        context['topbar_menu_tag'] = getattr(self, 'topbar_menu_tag', '')
+        return context
