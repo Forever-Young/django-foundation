@@ -21,7 +21,7 @@ class FoundationRadioInput(RadioInput):
         radio_span_checked = ' checked' if self.is_checked() else ''
         radio_span = mark_safe('<span class="custom radio%s"> </span>'\
                 % radio_span_checked)
-        return format_html('<label{0}>{1}{2} {3}</label>', label_for,
+        return format_html('<label{0} class="inline">{1}{2} {3}</label>', label_for,
                 self.tag(), radio_span, choice_label)
 
     def is_checked(self):
