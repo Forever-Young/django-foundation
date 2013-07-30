@@ -26,6 +26,7 @@ class GridFormMixin(object):
         context['form_render'] = self.get_form_render()
         context['form_button_extra_classes'] =\
                 self.get_form_button_extra_classes()
+        context['form_class'] = self.get_form_class()
         return context
 
     def get_form_title(self):
@@ -56,6 +57,9 @@ class GridFormMixin(object):
         else:
             button_classes = u''
         return button_classes
+
+    def get_form_class(self):
+        return getattr(self, 'get_form_class', None)
 
 
 class TopBarMenuMixin(object):
