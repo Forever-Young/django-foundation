@@ -59,7 +59,7 @@ class GridFormMixin(object):
         return button_classes
 
     def get_form_class(self):
-        return getattr(self, 'get_form_class', None)
+        return getattr(self, 'form_class', None)
 
 
 class TopBarMenuMixin(object):
