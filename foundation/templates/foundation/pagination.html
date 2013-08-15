@@ -1,19 +1,21 @@
 {% if is_paginated %}
+{% with attr=page_attr_name|default:'page' %}
 <div class="pagination-centered">
     <ul class="pagination">
     {% if page_obj.has_previous %}
-    <li class="arrow"><a href="?page={{ page_obj.previous_page_number }}{{ fragment }}">&laquo;</a></li>
+    <li class="arrow"><a href="?{{ attr }}={{ page_obj.previous_page_number }}{{ fragment }}">&laquo;</a></li>
     {% else %}
     <li class="arrow unavailable"><a href="">&laquo;</a></li>
     {% endif %}
     {% for page in page_obj.paginator.page_range %}
-    <li{% ifequal page_obj.number page %} class="current"{% endifequal %}><a href="{% ifnotequal page_obj.number page %}?page={{ page }}{{ fragment }}{% endifnotequal %}">{{ page }}</a></li>
+    <li{% ifequal page_obj.number page %} class="current"{% endifequal %}><a href="{% ifnotequal page_obj.number page %}?{{ attr }}={{ page }}{{ fragment }}{% endifnotequal %}">{{ page }}</a></li>
     {% endfor %}
     {% if page_obj.has_next %}
-    <li class="arrow"><a href="?page={{ page_obj.next_page_number }}{{ fragment }}">&raquo;</a></li>
+    <li class="arrow"><a href="?{{ attr }}={{ page_obj.next_page_number }}{{ fragment }}">&raquo;</a></li>
     {% else %}
     <li class="arrow unavailable"><a href="">&raquo;</a></li>
     {% endif %}
     </ul>
 </div>
+{% endwith %}
 {% endif %}
