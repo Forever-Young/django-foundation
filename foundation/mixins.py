@@ -28,6 +28,7 @@ class GridFormMixin(object):
                 self.get_form_button_extra_classes()
         context['form_css_class'] = self.get_form_css_class()
         context['ajax_modal_cols'] = self.get_ajax_modal_cols()
+        context['form_text_align'] = self.get_form_text_align()
         return context
 
     def get_form_title(self):
@@ -64,6 +65,9 @@ class GridFormMixin(object):
 
     def get_ajax_modal_cols(self):
         return getattr(self, 'ajax_modal_cols', 6)
+
+    def get_form_text_align(self):
+        return getattr(self, 'form_text_align', 'right')
 
 
 class TopBarMenuMixin(object):
