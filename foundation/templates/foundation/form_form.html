@@ -3,7 +3,7 @@
 <form action="{{ form_action_url }}" method="post"{% if form_uploading %} enctype="multipart/form-data"{% endif %} class="custom{% if form_css_class %} {{ form_css_class}}{% endif %}">
     {% if request.is_ajax %}
     <div class="row">
-        <div class="small-{{ ajax_grid_cols|default:'12' }} small-centered columns text-center"><h3>{{ form_title }}</h3></div>
+        <div class="small-{% if request.is_ajax %}{{ ajax_grid_cols|default:'12' }}{% else %}{{ grid_cols|default:'12' }}{% endif %} small-centered columns text-center"><h3>{{ form_title }}</h3></div>
     </div>
     {% endif %}
     {% csrf_token %}
@@ -17,10 +17,10 @@
         {% endifequal %}
     {% endifequal %}
     <div class="row">
-        <div class="small-{{ grid_cols|default:'12' }} small-centered columns">&emsp;</div>
+        <div class="small-{% if request.is_ajax %}{{ ajax_grid_cols|default:'12' }}{% else %}{{ grid_cols|default:'12' }}{% endif %} small-centered columns">&emsp;</div>
     </div>
     <div class="row">
-        <div class="small-{{ grid_cols|default:'12' }} small-centered columns text-right">
+        <div class="small-{% if request.is_ajax %}{{ ajax_grid_cols|default:'12' }}{% else %}{{ grid_cols|default:'12' }}{% endif %} small-centered columns text-right">
             <button class="button{{ form_button_extra_classes }}" type="submit">{{ form_submit_text }}</button>
         </div>
     </div>

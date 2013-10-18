@@ -44,10 +44,10 @@ class GridFormMixin(object):
         return getattr(self, 'form_uploading', False)
 
     def get_grid_cols(self):
-        return getattr(self, 'grid_cols', 10)
+        return getattr(self, 'grid_cols', 12)
 
     def get_ajax_grid_cols(self):
-        return getattr(self, 'ajax_grid_cols', 10)
+        return getattr(self, 'ajax_grid_cols', 12)
 
     def get_form_render(self):
         return getattr(self, 'form_render', 'as_grid_list')
