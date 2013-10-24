@@ -3,7 +3,7 @@
 <form action="{{ form_action_url }}" method="post"{% if form_uploading %} enctype="multipart/form-data"{% endif %} class="custom{% if form_css_class %} {{ form_css_class}}{% endif %}">
     {% if request.is_ajax %}
     <div class="row">
-        <div class="small-{% if request.is_ajax %}{{ ajax_grid_cols|default:'12' }}{% else %}{{ grid_cols|default:'12' }}{% endif %} small-centered columns text-center"><h3>{{ form_title }}</h3></div>
+        <div class="small-{{ ajax_grid_cols|default:'12' }} small-centered columns text-center"><h3 class="form-title">{{ form_title }}</h3></div>
     </div>
     {% endif %}
     {% csrf_token %}
@@ -16,6 +16,9 @@
             {{ form.as_grid_list }}
         {% endifequal %}
     {% endifequal %}
+    {% if request.is_ajax %}
+    <input type="hidden" name="is_ajax" value="1" />
+    {% endif %}
     <div class="row">
         <div class="small-{% if request.is_ajax %}{{ ajax_grid_cols|default:'12' }}{% else %}{{ grid_cols|default:'12' }}{% endif %} small-centered columns">&emsp;</div>
     </div>

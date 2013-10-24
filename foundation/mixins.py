@@ -3,6 +3,9 @@ from types import MethodType
 from foundation.forms import form_as_grid_list, form_as_grid_pair_list
 
 
+DEFAULT_COLS = 12
+
+
 class GridFormMixin(object):
 
     def get_form(self, form_class, *args, **kwargs):
@@ -29,7 +32,11 @@ class GridFormMixin(object):
         context['form_css_class'] = self.get_form_css_class()
         context['ajax_modal_cols'] = self.get_ajax_modal_cols()
         context['form_text_align'] = self.get_form_text_align()
+        context['form_cols'] = self.get_form_cols()
         return context
+
+    def get_form_cols(self):
+        return getattr(self, 'form_cols', DEFAULT_COLS)
 
     def get_form_title(self):
         return getattr(self, 'form_title', u'')
@@ -44,10 +51,10 @@ class GridFormMixin(object):
         return getattr(self, 'form_uploading', False)
 
     def get_grid_cols(self):
-        return getattr(self, 'grid_cols', 12)
+        return getattr(self, 'grid_cols', DEFAULT_COLS)
 
     def get_ajax_grid_cols(self):
-        return getattr(self, 'ajax_grid_cols', 12)
+        return getattr(self, 'ajax_grid_cols', DEFAULT_COLS)
 
     def get_form_render(self):
         return getattr(self, 'form_render', 'as_grid_list')
@@ -64,7 +71,7 @@ class GridFormMixin(object):
         return getattr(self, 'form_css_class', None)
 
     def get_ajax_modal_cols(self):
-        return getattr(self, 'ajax_modal_cols', 6)
+        return getattr(self, 'ajax_modal_cols', DEFAULT_COLS)
 
     def get_form_text_align(self):
         return getattr(self, 'form_text_align', 'right')

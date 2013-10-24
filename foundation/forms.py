@@ -32,7 +32,10 @@ def form_as_grid_pair_list(form):
 class GridMixin(object):
 
     def as_grid_list(self):
-        return form_as_grid_list(self, getattr(self, 'grid_cols', 10))
+        grid_cols = getattr(self, 'grid_cols', 12)
+        if self.request.is_ajax():
+            grid_cols = getattr(self, 'ajax_grid_cols', grid_cols)
+        return form_as_grid_list(self, grid_cols)
 
     def as_grid_pair_list(self):
         return form_as_grid_pair_list(self)

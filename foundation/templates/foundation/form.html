@@ -2,11 +2,11 @@
 {% block layout %}
     {% if form_title %}
     <div class="row">
-        <div class="small-12 columns text-center"><h2>{{ form_title }}</h2></div>
+        <div class="small-{{ form_cols|default:'12' }} small-centered columns text-center"><h2 class="form-title">{{ form_title }}</h2></div>
     </div>
     {% endif %}
     <div class="row">
-        <div class="small-12 columns">
+        <div class="small-{{ form_cols|default:'12' }} small-centered columns">
             {% include 'foundation/form_form.html' %}
         </div>
     </div>
