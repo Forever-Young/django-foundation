@@ -29,7 +29,7 @@ class FoundationRadioInput(RadioInput):
 
     def tag(self):
         if 'id' in self.attrs:
-            self.attrs['id'] = '%s_%s' % (self.attrs['id'], self.index)
+            self.attrs['id'] = '_'.join((self.attrs['id'], self.index))
         final_attrs = dict(self.attrs, type='radio', style='display:none;',
                 name=self.name, value=self.choice_value)
         if self.is_checked():
@@ -79,9 +79,8 @@ class FoundationListRadioFieldRenderer(object):
 
     def render(self):
         return format_html('<ul class="inline-list">\n{0}\n</ul>',
-                           format_html_join('\n', '<li>{0}</li>',
-                                            [(force_text(w),) for w in self]
-                                            ))
+                format_html_join('\n', '<li>{0}</li>',
+                    [(force_text(w),) for w in self]))
 
 
 class FoundationRadioSelect(RadioSelect):

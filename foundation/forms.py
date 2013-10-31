@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-from django import forms
+#from django import forms
+from foundation.models import DEFAULT_COLS
 
 
-def form_as_grid_list(form, cols=10):
+def form_as_grid_list(form, cols=DEFAULT_COLS):
     cols = getattr(form, 'grid_cols', cols)
     normal_row = '<div class="row formrow"><div class="small-' + str(cols)\
         + ' small-centered columns">%(label)s%(field)s%(errors)s%(help_text)s'\
@@ -16,10 +17,12 @@ def form_as_grid_list(form, cols=10):
     return output
 
 
-def form_as_grid_pair_list(form):
-    normal_row ='<div class="row formrow"><div class="small-4 columns text-right">'\
-        + '%(label)s</div><div class="small-8 columns">%(field)s%(errors)s%(help_text)s'\
-        + '</div></div>'
+def form_as_grid_two_cols_list(form, left_cols=4, right_cols=8):
+    normal_row =\
+'<div class="row formrow"><div class="small-{0} columns text-right">'.format(
+        left_cols)\
++ '%(label)s</div><div class="small-{0} columns">%(field)s%(errors)s\
+%(help_text)s'.format(right_cols) + '</div></div>'
     output = form._html_output(
         normal_row = normal_row,
         error_row = u'<div class="hide">%s</div>',
@@ -29,22 +32,26 @@ def form_as_grid_pair_list(form):
     return output
 
 
-class GridMixin(object):
+#class GridRenderMixin(object):
 
-    def as_grid_list(self):
-        grid_cols = getattr(self, 'grid_cols', 12)
-        if self.request.is_ajax():
-            grid_cols = getattr(self, 'ajax_grid_cols', grid_cols)
-        return form_as_grid_list(self, grid_cols)
+    #def __init__(self, *args, **kwargs):
+        #if 'request' in kwargs:
+            #self.request = kwargs.pop('request')
+        #return super(GridRenderMixin, self).__init__(*args, **kwargs)
 
-    def as_grid_pair_list(self):
-        return form_as_grid_pair_list(self)
+    #def as_grid_list(self):
+        #grid_cols = getattr(self, 'grid_cols', DEFAULT_COLS)
+        #if hasattr(self, 'request') and self.request.is_ajax():
+            #grid_cols = getattr(self, 'ajax_grid_cols', grid_cols)
+        #return form_as_grid_list(self, grid_cols)
+
+    #def as_grid_pair_list(self):
+        #return form_as_grid_two_cols_list(self)
 
 
-class GridForm(GridMixin, forms.Form):
-    # TODO: check
-    # error_css_class = 'error'
-    pass
+#class GridForm(GridRenderMixin, forms.Form):
+    #pass
 
-class GridModelForm(GridMixin, forms.ModelForm):
-    pass
+
+#class GridModelForm(GridRenderMixin, forms.ModelForm):
+    #pass
