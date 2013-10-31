@@ -70,7 +70,7 @@ class GridFormMixin(object):
         return getattr(self, 'form_submit_class', 'button')
 
     def get_form_text_align(self):
-        return getattr(self, 'form_text_align', 'center')
+        return getattr(self, 'form_text_align', 'left')
 
 
 class TopBarMenuMixin(object):

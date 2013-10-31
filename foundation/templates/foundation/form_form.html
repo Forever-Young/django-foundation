@@ -4,7 +4,7 @@
 <form action="{{ form_action_url }}" method="post"{% if is_form_uploading %} enctype="multipart/form-data"{% endif %}{% if form_css_class %} class="{{ form_css_class }}{% endif %}">
     {% if request.is_ajax %}
     <div class="row formrow">
-        <div class="{% "render_cols_class %}"><h3 class="form-title">{{ form_title }}</h3></div>
+        <div class="{% render_cols_class %}"><h3 class="form-title">{{ form_title }}</h3></div>
     </div>
     {% endif %}
     {% csrf_token %}
