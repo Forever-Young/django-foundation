@@ -55,7 +55,7 @@ class GridFormMixin(object):
         #return getattr(self, 'ajax_grid_cols', DEFAULT_COLS)
 
     def get_form_renderer(self):
-        return getattr(self, 'form_render', 'as_grid_list')
+        return getattr(self, 'form_renderer', 'as_grid_list')
 
     def get_form_css_class(self):
         return getattr(self, 'form_css_class', 'custom')
