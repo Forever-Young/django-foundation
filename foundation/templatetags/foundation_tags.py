@@ -26,8 +26,8 @@ def as_grid_list(form, cols=DEFAULT_COLS):
 
 
 @register.filter
-def as_grid_two_cols_list(form, left_cols=HALF_COLS, right_cols=HALF_COLS):
-    form_as_grid_two_cols_list(form, left_cols, right_cols)
+def as_grid_two_cols_list(form, left_cols=HALF_COLS-2, right_cols=HALF_COLS+2):
+    return form_as_grid_two_cols_list(form, left_cols, right_cols)
 
 
 @register.simple_tag(takes_context=True)
