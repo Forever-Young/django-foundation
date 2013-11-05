@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load foundation_tags %}
-{% include 'foundation/close_modal.html' %}
-<form action="{{ form_action_url }}" method="post"{% if is_form_uploading %} enctype="multipart/form-data"{% endif %}{% if form_css_class %} class="{{ form_css_class }}{% endif %}">
+{% if request.is_ajax %}<a class="close-reveal-modal">&#215;</a>{% endif %}
+<form id="" action="{{ form_action_url }}" method="post"{% if is_form_uploading %} enctype="multipart/form-data"{% endif %}{% if form_css_class %} class="{{ form_css_class }}{% endif %}">
     {% if request.is_ajax %}
     <div class="row formrow">
         <div class="{% render_cols_class %}"><h3 class="form-title">{{ form_title }}</h3></div>
@@ -16,7 +16,7 @@
     {% if request.is_ajax %}<input type="hidden" name="is_ajax_submit" value="1" />{% endif %}
     <div class="row formrow submit">
         <div class="{% render_cols_class %}">
-            <button class="{{ form_submit_class|default:'button' }}" type="submit">{{ form_submit_text|default:'OK' }}</button>
+            <button class="{{ form_submit_class|default:'button' }} ajax-modal-submit" type="submit">{{ form_submit_text|default:'OK' }}</button>
         </div>
     </div>
 </form>
