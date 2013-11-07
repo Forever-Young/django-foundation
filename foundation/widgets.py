@@ -29,7 +29,7 @@ class FoundationRadioInput(RadioInput):
 
     def tag(self):
         if 'id' in self.attrs:
-            self.attrs['id'] = '_'.join((self.attrs['id'], self.index))
+            self.attrs['id'] = '_'.join((self.attrs['id'], str(self.index)))
         final_attrs = dict(self.attrs, type='radio', style='display:none;',
                 name=self.name, value=self.choice_value)
         if self.is_checked():
