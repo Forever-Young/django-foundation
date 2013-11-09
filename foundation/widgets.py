@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
-from django.forms.widgets import RadioInput, RadioSelect, CheckboxInput
+from django.forms.widgets import RadioInput, RadioSelect, CheckboxInput, Widget
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html, format_html_join
@@ -114,3 +114,9 @@ class FoundationCheckbox(CheckboxInput):
         input_html = format_html('<input{0} />', flatatt(final_attrs))
         return format_html('<label for="{0}">{1}{2}&emsp;{3}</label>', id_for_label,
                 input_html, span_html, label)
+
+
+class FoundationStaticText(Widget):
+
+    def render(self, name, value, attrs=None):
+        return format_html('<small class="helptext">{0}</span>', force_text(value))

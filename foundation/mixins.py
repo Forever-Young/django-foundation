@@ -19,9 +19,6 @@ class GridFormMixin(object):
         context['form_submit_class'] = self.get_form_submit_class()
         return context
 
-    #def get_form_cols(self):
-        #return getattr(self, 'form_cols', DEFAULT_COLS)
-
     def get_form_title(self):
         return getattr(self, 'form_title', u'')
 
@@ -34,17 +31,11 @@ class GridFormMixin(object):
     def get_grid_cols(self):
         return getattr(self, 'grid_cols', DEFAULT_COLS)
 
-    #def get_ajax_grid_cols(self):
-        #return getattr(self, 'ajax_grid_cols', DEFAULT_COLS)
-
     def get_form_renderer(self):
         return getattr(self, 'form_renderer', 'as_grid_list')
 
     def get_form_css_class(self):
         return getattr(self, 'form_css_class', 'custom')
-
-    #def get_ajax_modal_cols(self):
-        #return getattr(self, 'ajax_modal_cols', DEFAULT_COLS)
 
     def get_form_submit_text(self):
         return getattr(self, 'form_submit_text', 'OK')
