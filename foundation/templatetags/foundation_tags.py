@@ -9,7 +9,6 @@ HALF_COLS = DEFAULT_COLS / 2
 register = template.Library()
 
 
-
 @register.simple_tag(takes_context=True)
 def active_class_if_tag(context, menu_tag, wrap=None):
     if context.get('topbar_menu_tag') == menu_tag:
