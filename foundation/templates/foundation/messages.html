@@ -1,5 +1,8 @@
 {% if messages %}
     {% for message in messages %}
+    {% if message.tags != 'popup' %}
+        
+    {% endif %}
     <div class="alert-box {{ message.tags }}" data-alert>
         {{ message|safe }}
         <a href="#" class="close">&times;</a>
