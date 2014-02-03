@@ -6,6 +6,8 @@ from foundation.models import DEFAULT_COLS
 
 HALF_COLS = DEFAULT_COLS / 2
 
+COLS_SPLIT = '{}:{}'.format(HALF_COLS-2, HALF_COLS+2)
+
 register = template.Library()
 
 
@@ -25,7 +27,15 @@ def as_grid_list(form, cols=DEFAULT_COLS):
 
 
 @register.filter
-def as_grid_two_cols_list(form, left_cols=HALF_COLS-2, right_cols=HALF_COLS+2):
+def as_grid_two_cols_list(form, cols_split=COLS_SPLIT):
+    left_cols = HALF_COLS - 2
+    right_cols = HALF_COLS + 2
+    try:
+        split = cols_split.split(':')
+        left_cols = int(split[0])
+        right_cols = int(split[1])
+    except:
+        pass
     return form_as_grid_two_cols_list(form, left_cols, right_cols)
 
 
