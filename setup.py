@@ -8,4 +8,5 @@ setup(
     author='https://github.com/spacetekk',
     url='https://github.com/spacetekk/django-foundation',
     packages=find_packages(),
+    include_package_data = True,
 )
