@@ -4,7 +4,7 @@ from django.forms.widgets import RadioChoiceInput, RadioSelect, CheckboxInput, W
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html, format_html_join
-from django.forms.util import flatatt
+from django.forms.utils import flatatt
 
 
 class FoundationRadioInput(RadioChoiceInput):
