@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
-from django.forms.widgets import RadioInput, RadioSelect, CheckboxInput, Widget
+from django.forms.widgets import RadioChoiceInput, RadioSelect, CheckboxInput, Widget
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html, format_html_join
 from django.forms.util import flatatt
 
 
-class FoundationRadioInput(RadioInput):
+class FoundationRadioInput(RadioChoiceInput):
 
     def render(self, name=None, value=None, attrs=None, choices=()):
         name = name or self.name
